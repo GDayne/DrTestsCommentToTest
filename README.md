@@ -1,4 +1,4 @@
 Metacello new
- baseline:'DrTestsCommentToTest';
- repository: 'github://GDayne/DrTestsCommentToTest:master/src';
- load.
+baseline:'DrTestsCommentToTest';
+repository: 'github://GDayne/DrTestsCommentToTest:master/src';
+load.
