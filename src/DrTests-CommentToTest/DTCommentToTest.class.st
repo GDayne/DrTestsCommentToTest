@@ -77,6 +77,22 @@ DTCommentToTest >> runTests [
 ]
 
 { #category : #api }
+DTCommentToTest >> selectClasesFrom: packagesSelected [
+^(packagesSelected collect: [ :p | 
+		p definedClasses select: [ :c | 
+			c methods anySatisfy: [
+					:m | ((m methodClass commentsAt: m selector) select: [ :com | com includesSubstring: '>>>']) isNotEmpty ] ]]).
+
+]
+
+{ #category : #api }
+DTCommentToTest >> selectPackages [
+^(RPackage organizer packages select: [ :p |
+			p definedClasses anySatisfy: [ :c | c methods anySatisfy: [
+					:m | m comment isNotNil and: [ ((m methodClass commentsAt: m selector) select: [ :com | com includesSubstring: '>>>']) isNotEmpty ]]]])
+]
+
+{ #category : #api }
 DTCommentToTest >> startButtonHelp [
 	^ 'Run tests selected.' translated
 ]
